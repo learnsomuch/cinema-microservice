@@ -19,6 +19,32 @@ $ docker exec mongoNode{number} bash -c 'mongoimport --db cinemas --collection c
 $ docker exec mongoNode{number} bash -c 'mongoimport --db cinemas --collection cinemas --file /tmp/cinemas.json --jsonArray -u $MONGO_USER_ADMIN -p $MONGO_PASS_ADMIN --authenticationDatabase "admin"'
 ```
 
+### how to run it
+
+**This to run our microservice in a docker container**
+we need docker installed
+```
+$ bash < start-service.sh
+```
+
+**To run in locally**
+we need nodejs installed
+
+- install the dependencies
+```
+$ npm i --silent
+```
+
+- run the tests
+```
+$ npm test
+```
+
+- start the service
+```
+$ npm start
+```
+
 ### Stack
 - NodeJS V7
 - MongoDB 3.4.1

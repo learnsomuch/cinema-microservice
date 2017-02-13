@@ -1,7 +1,10 @@
 const express = require('express')
 const morgan = require('morgan')
 const helmet = require('helmet')
+<<<<<<< HEAD
 const spdy = require('spdy')
+=======
+>>>>>>> step-4
 const api = require('../api/movies')
 
 const start = (options) => {
@@ -23,12 +26,16 @@ const start = (options) => {
 
     api(app, options)
 
+<<<<<<< HEAD
     if (process.env.NODE === 'test') {
       const server = app.listen(options.port, () => resolve(server))
     } else {
       const server = spdy.createServer(options.ssl, app)
         .listen(options.port, () => resolve(server))
     }
+=======
+    const server = app.listen(options.port, () => resolve(server))
+>>>>>>> step-4
   })
 }
 
