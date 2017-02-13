@@ -43,8 +43,8 @@ const serverSettings = {
 }
 
 const stripeSettings = {
-  secret: 'sk_test_lPPoJjmmbSjymtgo4r0O3z89',
-  public: 'pk_test_l10342hIODZmOJsBpY6GVPHj'
+  secret: process.env.SECRET_STRIPE,
+  public: process.env.PUBLIC_STRIPE
 }
 
 module.exports = Object.assign({}, { dbSettings, serverSettings, stripeSettings })
