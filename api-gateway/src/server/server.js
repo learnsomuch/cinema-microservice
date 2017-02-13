@@ -2,6 +2,11 @@
 const express = require('express')
 const proxy = require('http-proxy-middleware')
 const spdy = require('spdy')
+const morgan = require('morgan')
+const helmet = require('helmet')
+const bodyparser = require('body-parser')
+const cors = require('cors')
+const status = require('http-status')
 
 const start = (container) => {
   return new Promise((resolve, reject) => {
@@ -16,6 +21,15 @@ const start = (container) => {
     }
 
     const app = express()
+    app.use(morgan('dev'))
+    app.use(bodyparser.json())
+    app.use(cors())
+    app.use(helmet())
+    app.use((err, req, res, next) => {
+      reject(new Error('Bad Gateway!, err:' + err))
+      res.status(status.BAD_GATEWAY).send('url not found!')
+      next()
+    })
 
     for (let id of Reflect.ownKeys(routes)) {
       const {route, target} = routes[id]
